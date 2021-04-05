@@ -27,7 +27,7 @@ public class AuthorService {
                         () -> authorsRepository.save(author));
     }
     public Optional<Author> findByName(String name, String surname) {
-        return authorsRepository.findByName(name,surname);
+        return authorsRepository.findByNameAndAndSurname(name,surname);
     }
     public void delete(Long id){
         authorsRepository.deleteById(id);
