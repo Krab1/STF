@@ -1,46 +1,46 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8"/>
+<head th:replace="books/fragments::head">
     <title>Add New Author</title>
-    <link th:href="@{/styles/common.css}" rel="stylesheet" />
 </head>
 <body>
-<div>
-    <H1>Add New Author</H1>
-    <div>
-        <span>
-        <a class="glow-button" href="/">All books</a>
-        <a class="glow-button" href="/newbook"><span>New book</span></a>
-        </span>
+<div id="wrapper">
+    <div id=header th:replace="books/fragments::menu"></div>
+    <div id="contentliquid">
+        <div id="content">
+            <form action="#" th:action="@{/saveauthor}" th:object="${author}" method="post">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>PARAMETER</th>
+                        <th>VALUE</th>
+                    </tr>
+                    <tr>
+                        <label title="First Name">
+                            <td>First Name:</td>
+                            <td>
+                                <input type="text" th:field="*{name}"/>
+                            </td>
+                        </label>
+                    </tr>
+                    <tr>
+                        <label title="Last Name">
+                            <td>Last Name:</td>
+                            <td>
+                                <input type="text" th:field="*{surname}"/>
+                            </td>
+                        </label>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button th:border="0" class="glow-button" type="submit">SAVE</button>
+                        </td><td/>
+                    </tr>
+                    </thead>
+                </table>
+            </form>
+        </div>
     </div>
-    <form action="#" th:action="@{/saveauthor}" th:object="${author}" method="post">
-        <table>
-            <thead>
-            <tr>
-                <label title="First Name">
-                    <td>First Name:</td>
-                    <td>
-                        <input type="text" th:field="*{name}"/>
-                    </td>
-                </label>
-            </tr>
-            <tr>
-                <label title="Last Name">
-                    <td>Last Name:</td>
-                    <td>
-                        <input type="text" th:field="*{surname}"/>
-                    </td>
-                </label>
-            </tr>
-            <tr>
-                <td>
-                    <button th:border="0" class="glow-button" type="submit">SAVE</button>
-                </td><td/>
-            </tr>
-            </thead>
-        </table>
-    </form>
 </div>
 </body>
 </html>

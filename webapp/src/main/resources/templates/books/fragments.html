@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head">
+    <meta charset="UTF-8"/>
+    <title>SFT BOOK STORE</title>
+    <link th:href="@{/styles/common.css}" rel="stylesheet" />
+</head>
+<body>
+<div th:fragment="header">
+</div>
+<div class="container" th:fragment="menu">
+    <div>
+        <nav id='menu' class="navbar base">
+            <input type='checkbox' id='responsive-menu' onclick='updatemenu()'><label></label>
+            <ul class="navbar nav">
+                <li class="navitem">
+                    <a href="/">All books</a>
+                </li>
+                <li class="navitem">
+                    <a href="/newbook"><span>New book</span></a>
+                </li>
+                <li class="navitem">
+                    <a href="/newauthor"><span>New author</span></a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+<div th:fragment="footer">
+</div>
+</body>
+</html>
