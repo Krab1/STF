@@ -1,0 +1,2 @@
+rootProject.name = 'Test Package'
+include ':webapp', ':testframework'

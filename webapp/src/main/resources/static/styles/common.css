@@ -1,0 +1,111 @@
+H1{
+    font-family: sans-serif;
+    color: #1d1c1c;
+    font-style: inherit;
+    text-align: left;
+    font-weight: bold;
+}
+div {
+    text-align: justify-all;
+    width: 1000px;
+}
+label{
+    display: inline-block;
+    width: 200px;
+    margin: 5px;
+    text-align: left;
+    table-layout: fixed;
+}body {
+     background: #f5f2f2;
+ }
+.glow-button {
+    text-decoration: none;
+    display: inline-block;
+    padding: 5px 10px;
+    margin: 2px 5px;
+    border-radius: 6px;
+    box-shadow: 0 0 100px 0 #2C4594 inset, 0 0 0 0 #2C4594;
+    font-family: sans-serif;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: white;
+    width: 110px;
+    transition: .15s ease-in-out;
+}
+.glow-button:hover {
+    box-shadow: 0 0 3px 0 #2C4594 inset, 0 0 2px 2px #2C4594;
+    color: #2C4594;
+}
+.page-btn {
+    text-decoration: none;
+    display: inline-block;
+    padding: 2px 5px;
+    margin: 2px 5px;
+    border-radius: 6px;
+    box-shadow: 0 0 100px 0 #2C4594 inset, 0 0 0 0 #2C4594;
+    font-family: sans-serif;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: white;
+    transition: .15s ease-in-out;
+}
+.page-btn:hover {
+    box-shadow: 0 0 3px 0 #2C4594 inset, 0 0 2px 2px #2C4594;
+    color: #2C4594;
+}
+.page-btn-pressed {
+    text-decoration: none;
+    display: inline-block;
+    padding: 2px 5px;
+    margin: 2px 5px;
+    border-radius: 6px;
+    box-shadow: 0 0 100px 0 #d6cdcd inset, 0 0 0 1px #2C4594;
+    font-family: sans-serif;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: #1d1c1c;
+    transition: .15s ease-in-out;
+}
+table {
+    font-family: sans-serif;
+    font-size: 14px;
+    border-radius: 14px;
+    border-spacing: 0px;
+    text-align: match-parent;
+    border-style: solid;
+    border-color: #8c9b9d;
+    tab-size: 1000px;
+}
+th {
+    background: #4caca2;
+    color: #ffffff;
+    padding: 10px 20px;
+}
+th, td {
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    border-color: white;
+}
+th:first-child, td:first-child {
+    text-align: left;
+}
+th:first-child {
+    border-top-left-radius: 10px;
+}
+th:last-child {
+    border-top-right-radius: 10px;
+    border-right: none;
+}
+td {
+    padding: 10px 20px;
+    background: #e1e2e1;
+}
+tr:last-child td:first-child {
+    border-radius: 0 0 0 10px;
+}
+tr:last-child td:last-child {
+    border-radius: 0 0 10px 0;
+}
+tr td:last-child {
+    border-right: none;
+}

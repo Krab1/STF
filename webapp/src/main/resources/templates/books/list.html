@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>List of Books</title>
+    <link th:href="@{/styles/common.css}" rel="stylesheet" />
+</head>
+<body>
+<div>
+    <H1>Available Books</H1>
+    <div>
+    <form id="search form"th:href="@{/}">
+            <label title="Filter book by name">Filter book by name:
+                <input type="text" id="searchfield" name="name">
+            </label>
+        <a class="glow-button" href="javascript:;" onclick="parentNode.submit();"><span>Filter</span></a>
+        <a class="glow-button" href="/newbook"><span>New book</span></a>
+        <a class="glow-button" href="/newauthor"><span>New author</span></a>
+    </form>
+    </div>
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>BOOK NAME</th>
+            <th>PRICE</th>
+            <th>AGE</th>
+            <th>AUTHOR</th>
+            <th>ACTIONS</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="book : ${books}">
+            <td th:text="${book.id}">Book ID</td>
+            <td th:text="${book.name}">Book Name</td>
+            <td th:text="${book.price} % 1 == 0? ${book.price} :${#numbers.formatDecimal(book.price, 1, 2)}">Book Price</td>
+            <td th:text="${book.age}">Book age</td>
+            <td th:text="${book.author.name}">Book author</td>
+            <td>
+                <a class="glow-button" th:href="@{'/bookedit/' + ${book.id}}"><span>Edit</span></a>
+                <a class="glow-button" th:href="@{'/bookdelete/' + ${book.id}}"><span>Delete</span></a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <div>
+        <br/>
+        <span class="page-btn-pressed">Total Items: [[${totalitems}]] - Page [[${currentpage}]] of [[${totalpages}]], Pages:</span>   &nbsp
+    <span th:each="number : ${#numbers.sequence(1, totalpages)}">
+        <a class="page-btn" th:if="${number != currentpage}" th:href="@{'/page/' + ${number}}">[[${number}]]</a>
+        <span class="page-btn-pressed" th:unless="${number != currentpage}">[[${number}]]</span>
+    </span>
+    </div>
+</div>
+</body>
+</html>

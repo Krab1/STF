@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Add New Book</title>
+    <link th:href="@{/styles/common.css}" rel="stylesheet" />
+</head>
+<body>
+<div>
+    <H1>Add New Book</H1>
+    <div>
+        <span>
+        <a class="glow-button" href="/">All books</a>
+        <a class="glow-button" href="/newauthor"><span>New author</span></a>
+        </span>
+    </div>
+    <form action="#" th:action="@{/savebook}" th:object="${book}" method="post">
+        <table>
+            <thead>
+            <tr>
+                <label title="Name">
+                    <td>Name:</td>
+                    <td>
+                        <input type="text" th:field="*{name}"/>
+                    </td>
+                </label>
+
+            </tr>
+            <tr>
+                <label title="Price">
+                    <td>Price:</td>
+                    <td>
+                        <input type="number" th:field="*{price}"/>
+                    </td>
+                </label>
+            </tr>
+            <tr>
+                <label title="Date of release">
+                    <td>Date of release:</td>
+                    <td>
+                        <input type="date" th:type="date" th:field="*{{dateofissue}}">
+                    </td>
+                </label>
+
+            </tr>
+            <tr>
+                <label title="Author">
+                    <td>Author:</td>
+                    <td>
+                        <select th:field="*{author}">
+                            <option th:each="auth : ${authors}" th:value="${auth.getId()}" th:text="${(auth.getName() + ', ' + auth.getSurname())}"></option>
+                        </select>
+                    </td>
+                </label>
+            </tr>
+            <tr>
+                <td>
+                    <button th:border="0" class="glow-button" type="submit">SAVE</button>
+                </td><td/>
+            </tr>
+            </thead>
+        </table>
+    </form>
+</div>
+</body>
+</html>
