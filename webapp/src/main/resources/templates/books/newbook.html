@@ -9,7 +9,7 @@
     <div id="contentliquid">
         <div id="content">
             <form action="#" th:action="@{/savebook}" th:object="${book}" method="post">
-                <table>
+                <table id="bookformtable">
                     <thead>
                     <tr>
                         <th>PARAMETER</th>
@@ -39,7 +39,6 @@
                                 <input type="date" th:type="date" th:field="*{{dateofissue}}">
                             </td>
                         </label>
-
                     </tr>
                     <tr>
                         <label title="Author">

@@ -11,8 +11,6 @@ ext{
     spring = "2.4.4"
     lombok = "1.18.20"
     h2 = "1.4.200"
-    thymeleafSpring = "3.0.12.RELEASE"
-    springFramework = "5.3.5"
 }
 
 configurations {
@@ -36,9 +34,7 @@ dependencies {
     compileOnly "org.projectlombok:lombok:${lombok}"
     runtimeOnly "com.h2database:h2:${h2}"
     annotationProcessor "org.projectlombok:lombok:${lombok}"
-    testImplementation "org.springframework.boot:spring-boot-starter-test:${spring}"
-}
-
-test {
-    useJUnitPlatform()
+    testImplementation (
+            "org.springframework.boot:spring-boot-starter-test:${spring}",
+    )
 }

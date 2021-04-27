@@ -12,8 +12,10 @@ public class Author {
     @GeneratedValue(strategy = GenerationType.AUTO)
     long id;
     @Column(name = "NAME")
+    @Basic(fetch = FetchType.LAZY)
     String name;
     @Column(name = "LASTNAME")
+    @Basic(fetch = FetchType.LAZY)
     String surname;
     public Author() { }
     public Author(String name, String surname) {

@@ -1,18 +1,76 @@
 apply plugin: 'java'
-
+apply plugin: 'io.qameta.allure'
 group 'com.krab1'
 version '1.0-SNAPSHOT'
 sourceCompatibility = '11'
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath "io.qameta.allure:allure-gradle:2.5"
+    }
+}
+
+allure {
+    version = '2.7.0'
+    autoconfigure = true
+    aspectjweaver = true
+    allureJavaVersion = version
+}
+
+ext{
+    spring = "2.4.4"
+    lombok = "1.18.20"
+    h2 = "1.4.200"
+    testng = "7.4.0"
+    allureversion = "2.13.9"
+    selenide = "5.20.1"
+    selenium = "3.141.59"
+    assertj = "3.19.0"
+    restAssured = "4.3.3"
+}
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+    implementation (
+            "org.springframework.boot:spring-boot-starter-data-jpa:${spring}",
+            "org.springframework.boot:spring-boot-starter-data-rest:${spring}",
+            "org.springframework.boot:spring-boot-test:${spring}",
+            "org.springframework.boot:spring-boot-starter-test:${spring}",
+            "org.testng:testng:${testng}",
+            "io.qameta.allure:allure-testng:${allureversion}",
+            "io.qameta.allure:allure-selenide:${allureversion}",
+            //"io.qameta.allure:allure-rest-assured:${allureversion}",
+            "io.qameta.allure:allure-rest-assured:2.13.8",
+            "io.qameta.allure:allure-assertj:${allureversion}",
+            "org.seleniumhq.selenium:selenium-java:${selenium}",
+            "com.codeborne:selenide:${selenide}"
+    )
+    testImplementation (
+            "org.assertj:assertj-core:${assertj}",
+            "io.rest-assured:rest-assured:${restAssured}"
+    )
+    runtimeOnly "com.h2database:h2:${h2}"
+    compileOnly "org.projectlombok:lombok:${lombok}"
+    annotationProcessor "org.projectlombok:lombok:${lombok}"
+
+}
+tasks.withType(Test){
+    clean
+    useTestNG()
+    scanForTestClasses=false
+    testLogging.showStandardStreams=true
 }
 
-test {
-    useJUnitPlatform()
+task parallelTest(type: Test) {
+    useTestNG {
+        options ->
+            options.parallel = 'methods'
+            options.threadCount = 6
+    }
 }
