@@ -12,8 +12,10 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.time.LocalDate;
+import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)
@@ -29,6 +31,7 @@ public class BooksServiceTest {
 
     @Test
     public void testSave() {
+
         Book book = new Book("123", 111.123, LocalDate.now().minusDays(5), new Author("Test", "Testingoff"));
         booksService.save(book);
         ArgumentCaptor<Book> bookArgumentCaptor = ArgumentCaptor.forClass(Book.class);
@@ -54,6 +57,7 @@ public class BooksServiceTest {
 
     @Test
     public void testFindById() {
+        given(booksRepository.findById(3L)).willReturn(Optional.of(new Book("123", 111.123, LocalDate.now().minusDays(5), new Author("Test", "Testingoff"))));
         booksService.findById(3L);
         verify(booksRepository).findById(3L);
     }
