@@ -6,8 +6,7 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.annotation.PropertySources;
 
 @Configuration
-@ComponentScan("com.krab1.stfbase")
+@ComponentScan("com.krab.stfbase")
 @PropertySources(@PropertySource("classpath:application.properties"))
 public class StfBootstrapper {
-
 }

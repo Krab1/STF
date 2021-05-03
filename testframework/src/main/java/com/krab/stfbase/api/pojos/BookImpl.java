@@ -1,8 +1,7 @@
 package com.krab.stfbase.api.pojos;
 
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Data;
-
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import java.time.LocalDate;
 
 @Data

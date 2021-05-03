@@ -1,16 +1,20 @@
-apply plugin: 'java'
-apply plugin: 'io.qameta.allure'
-group 'com.krab1'
-version '1.0-SNAPSHOT'
-sourceCompatibility = '11'
-
 buildscript {
     repositories {
+        mavenCentral()
         jcenter()
     }
     dependencies {
         classpath "io.qameta.allure:allure-gradle:2.5"
     }
+}
+
+plugins {
+    id 'io.qameta.allure' version '2.5'
+    id 'java'
+}
+
+repositories {
+    mavenCentral()
 }
 
 allure {
@@ -19,7 +23,6 @@ allure {
     aspectjweaver = true
     allureJavaVersion = version
 }
-
 ext{
     spring = "2.4.4"
     lombok = "1.18.20"
@@ -32,41 +35,36 @@ ext{
     restAssured = "4.3.3"
 }
 
-repositories {
-    mavenCentral()
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
 }
 
 dependencies {
     implementation (
-            "org.springframework.boot:spring-boot-starter-data-jpa:${spring}",
-            "org.springframework.boot:spring-boot-starter-data-rest:${spring}",
-            "org.springframework.boot:spring-boot-test:${spring}",
+            "org.seleniumhq.selenium:selenium-java:${selenium}",
+            "com.codeborne:selenide:${selenide}",
             "org.springframework.boot:spring-boot-starter-test:${spring}",
             "org.testng:testng:${testng}",
             "io.qameta.allure:allure-testng:${allureversion}",
             "io.qameta.allure:allure-selenide:${allureversion}",
-            //"io.qameta.allure:allure-rest-assured:${allureversion}",
-            "io.qameta.allure:allure-rest-assured:2.13.8",
-            "io.qameta.allure:allure-assertj:${allureversion}",
-            "org.seleniumhq.selenium:selenium-java:${selenium}",
-            "com.codeborne:selenide:${selenide}"
+            "io.qameta.allure:allure-rest-assured:${allureversion}",
+            "io.rest-assured:rest-assured:${restAssured}",
+            "com.fasterxml.jackson.core:jackson-databind:2.11.4"
     )
     testImplementation (
+            "io.qameta.allure:allure-assertj:${allureversion}",
+            "org.springframework.boot:spring-boot-starter-test:${spring}",
             "org.assertj:assertj-core:${assertj}",
-            "io.rest-assured:rest-assured:${restAssured}"
     )
     runtimeOnly "com.h2database:h2:${h2}"
     compileOnly "org.projectlombok:lombok:${lombok}"
     annotationProcessor "org.projectlombok:lombok:${lombok}"
-
 }
-tasks.withType(Test){
-    clean
+test{
     useTestNG()
-    scanForTestClasses=false
-    testLogging.showStandardStreams=true
 }
-
 task parallelTest(type: Test) {
     useTestNG {
         options ->
