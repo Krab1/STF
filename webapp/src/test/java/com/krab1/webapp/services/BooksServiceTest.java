@@ -31,7 +31,6 @@ public class BooksServiceTest {
 
     @Test
     public void testSave() {
-
         Book book = new Book("123", 111.123, LocalDate.now().minusDays(5), new Author("Test", "Testingoff"));
         booksService.save(book);
         ArgumentCaptor<Book> bookArgumentCaptor = ArgumentCaptor.forClass(Book.class);

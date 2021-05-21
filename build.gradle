@@ -1,12 +1,26 @@
-buildscript {
+subprojects {
+    apply plugin: 'java'
+    group 'com.krab1'
+    sourceCompatibility = JavaVersion.VERSION_15
+    ext{
+        lombok = "1.18.20"
+    }
+    buildscript {
+        repositories {
+            mavenCentral()
+            jcenter()
+        }
+    }
     repositories {
         mavenCentral()
         jcenter()
     }
-}
-allprojects {
-    group 'com.krab1'
-}
-subprojects {
-    apply plugin: 'java'
+    configurations {
+        compileOnly.extendsFrom annotationProcessor
+        testCompileOnly.extendsFrom anotationProcessor
+        testAnnotationProcessor.extendsFrom annotationProcessor
+    }
+    dependencies {
+        annotationProcessor "org.projectlombok:lombok:${lombok}"
+    }
 }

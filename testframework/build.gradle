@@ -7,16 +7,10 @@ buildscript {
         classpath "io.qameta.allure:allure-gradle:2.5"
     }
 }
-
 plugins {
     id 'io.qameta.allure' version '2.5'
     id 'java'
 }
-
-repositories {
-    mavenCentral()
-}
-
 allure {
     version = '2.7.0'
     autoconfigure = true
@@ -35,12 +29,6 @@ ext{
     restAssured = "4.3.3"
 }
 
-configurations {
-    compileOnly {
-        extendsFrom annotationProcessor
-    }
-}
-
 dependencies {
     implementation (
             "org.seleniumhq.selenium:selenium-java:${selenium}",
@@ -55,12 +43,9 @@ dependencies {
     )
     testImplementation (
             "io.qameta.allure:allure-assertj:${allureversion}",
-            "org.springframework.boot:spring-boot-starter-test:${spring}",
             "org.assertj:assertj-core:${assertj}",
     )
     runtimeOnly "com.h2database:h2:${h2}"
-    compileOnly "org.projectlombok:lombok:${lombok}"
-    annotationProcessor "org.projectlombok:lombok:${lombok}"
 }
 test{
     useTestNG()
