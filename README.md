@@ -1,7 +1,7 @@
 What this project about: <br>
 It is multimodule gradle project where I'm experimenting with techs
 
-#webapp
+#webapp<br>
 Spring Boot based application just for testing purpose <br>
 <b>Includes:</b> <br>
 Spring JPA for DB support <br>
@@ -10,11 +10,11 @@ Also there is a RestClient <br>
 and some other stuff <br>
 
 
-#testframework
+#testframework<br>
 it is classical TestNG extendable test framework for multipurpose usages such as Selenium UI tests and Rest API\DB tests
 with java code tests also support springboot for DI, supports parallel execution
 
-#cucumber_stf
+#cucumber_stf<br>
 Is cucumber + jUnit framework with parallel execution also it is multimodule inside <br>
 There is Core part and subproject part <br>
 <b>Core</b> part basically stores all common logic<br><br>
