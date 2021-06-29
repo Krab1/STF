@@ -1,0 +1,23 @@
+subprojects {
+    task fullTest(type: JavaExec){
+        classpath = sourceSets["test"].runtimeClasspath
+        main = "org.junit.platform.console.ConsoleLauncher"
+        dependsOn(testClasses)
+
+        args("--disable-ansi-colors")
+        args("--include-engine", "cucumber")
+        args("--select-package", "com.krab1.cucumberstf")
+    }
+
+    tasks.withType(JavaExec) {
+        doFirst {
+            systemProperty("cucumber.execution.parallel.enabled", System.getProperty("test.parallel", "true"))
+            systemProperty("cucumber.filter.tags", "not @wip")
+        }
+    }
+
+    test {
+        dependsOn fullTest
+        exclude "**/*"
+    }
+}

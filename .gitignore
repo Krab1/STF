@@ -26,3 +26,4 @@ hs_err_pid*
 /webapp/build/
 /.idea/
 /testframework/.gradle/
+/target/

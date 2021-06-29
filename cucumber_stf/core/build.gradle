@@ -1,0 +1,3 @@
+dependencies {
+    implementation("net.sf.saxon:saxon:8.7")
+}

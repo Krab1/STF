@@ -1,0 +1,3 @@
+dependencies {
+    implementation project(":cucumber_stf:core")
+}
