@@ -1,3 +1,7 @@
 dependencies {
     implementation("net.sf.saxon:saxon:8.7")
 }
+
+fullTest{ enabled = false }
+
+tasks.withType(Test) {enabled = false}

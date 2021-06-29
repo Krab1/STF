@@ -1,4 +1,3 @@
 rootProject.name = 'Test Package'
-include ':webapp', ':testframework'
-include 'cucumber_stf:core', 'cucumber_stf:subproject_test'
+include ':webapp', ':testframework', ':cucumber_stf:core', ':cucumber_stf:subproject_test'
 

@@ -1,12 +1,14 @@
 subprojects {
     task fullTest(type: JavaExec){
+        dependsOn testClasses
         classpath = sourceSets["test"].runtimeClasspath
-        main = "org.junit.platform.console.ConsoleLauncher"
-        dependsOn(testClasses)
-
+        getMainClass().set("org.junit.platform.console.ConsoleLauncher")
+        systemProperties(project.gradle.startParameter.systemPropertiesArgs)
         args("--disable-ansi-colors")
         args("--include-engine", "cucumber")
         args("--select-package", "com.krab1.cucumberstf")
+        args("--plugin", "pretty")
+        args = ["--scan-class-path", sourceSets["test"].output.getResourcesDir()]
     }
 
     tasks.withType(JavaExec) {

@@ -26,4 +26,5 @@ hs_err_pid*
 /webapp/build/
 /.idea/
 /testframework/.gradle/
-/target/
+target
+/cucumber_stf/subproject_test/target/

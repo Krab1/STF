@@ -4,25 +4,27 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath "io.qameta.allure:allure-gradle:2.5"
+        classpath "io.qameta.allure:allure-gradle:2.8.1"
     }
 }
-plugins {
-    id 'io.qameta.allure' version '2.5'
-    id 'java'
-}
+
+apply plugin: 'io.qameta.allure'
+apply plugin: 'java'
+
+
 allure {
-    version = '2.7.0'
+    version = '2.8.1'
     autoconfigure = true
     aspectjweaver = true
     allureJavaVersion = version
 }
+
 ext{
     spring = "2.4.4"
     lombok = "1.18.20"
     h2 = "1.4.200"
     testng = "7.4.0"
-    allureversion = "2.13.9"
+    allureversion = "2.14.0"
     selenide = "5.20.1"
     selenium = "3.141.59"
     assertj = "3.19.0"
@@ -47,9 +49,11 @@ dependencies {
     )
     runtimeOnly "com.h2database:h2:${h2}"
 }
+
 test{
     useTestNG()
 }
+
 task parallelTest(type: Test) {
     useTestNG {
         options ->

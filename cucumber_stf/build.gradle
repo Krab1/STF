@@ -1,14 +1,17 @@
 repositories {
     mavenCentral()
 }
-group = "com.krab1.cucumberstf"
 
+group = "com.krab1.cucumberstf"
 apply plugin: 'java'
 apply from: 'test.gradle'
 
 subprojects {
     dependencies {
-       configurations.all {
+        configurations.all {
+            exclude module: 'junit', group: 'junit'
+            exclude module: 'junit-vintage-engine', group: "org.junit.vintage"
+            exclude group: "org.junit.jupiter", module: "junit-jupiter-engine"
             exclude module: 'slf4j-log4j12'
             exclude module: 'log4j'
         }
